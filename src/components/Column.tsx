@@ -1,6 +1,10 @@
+// "use client";
+
 import React from "react";
 import TodoCard from "./TodoCard";
 import { CirclePlus } from "lucide-react";
+import { useModalStore } from "@/store/ModalStore";
+import { DialogDemo } from "./DialogDemo";
 
 type Props = {
   id: TypedColumn;
@@ -17,6 +21,12 @@ const idToColumnText: {
 };
 
 const Column = ({ id, todos, index }: Props) => {
+  // const openModal = useModalStore((state) => state.openModal);
+
+  // const handleAddTodo = () => {
+  //   openModal();
+  // };
+
   return (
     <div className="p-2 rounded-2xl shadow-sm bg-violet-100/50">
       <h2 className="flex justify-between font-semibold text-xl">
@@ -31,9 +41,13 @@ const Column = ({ id, todos, index }: Props) => {
         ))}
 
         <div className="flex items-end justify-end p-3">
-          <button className="text-green-500 hover:text-green-600">
+          {/* <button
+            // onClick={handleAddTodo}
+            className="text-green-500 hover:text-green-600"
+          >
             <CirclePlus className="h-7 w-7" />
-          </button>
+          </button> */}
+          <DialogDemo />
         </div>
       </div>
     </div>
