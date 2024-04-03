@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import HabitHUBLogo from "./HabitHUBLogo";
+import CalendarComp from "./CalendarComp";
 
 export default function SideNav() {
   return (
@@ -9,14 +10,16 @@ export default function SideNav() {
     "
     >
       <Link
-        className="mb-4 px-2 flex h-14 items-center justify-start md:h-16"
+        className="px-2 flex h-14 items-center justify-start md:h-16"
         href="/"
       >
         <div className="w-40">
           <HabitHUBLogo />
         </div>
       </Link>
-      <div className="h-36 mb-4 px-2">Calendar</div>
+      <div className="mb-2 px-1">
+        <CalendarComp />
+      </div>
       <div>
         <div className="font-semibold px-2">Tasks</div>
         <div className="flex w-full items-center justify-between bg-gray-200 h-9">

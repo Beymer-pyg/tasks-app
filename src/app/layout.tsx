@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { cn } from "@/lib/utils";
 import SideNav from "@/components/SideNav";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +25,11 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen font-sans antialiased grainy",
-          inter.className
+          fontSans.variable
         )}
       >
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-          <div className="w-full flex-none md:w-64">
+          <div className="w-full flex-none md:w-72">
             <SideNav />
           </div>
           <MaxWidthWrapper className="flex-grow p-1 md:overflow-y-auto md:p-2">
