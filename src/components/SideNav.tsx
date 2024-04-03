@@ -10,7 +10,7 @@ export default function SideNav() {
     "
     >
       <Link
-        className="px-2 flex h-14 items-center justify-start md:h-16"
+        className="px-2 flex h-14 items-center justify-center md:h-16"
         href="/"
       >
         <div className="w-40">
