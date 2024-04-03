@@ -4,6 +4,9 @@ import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { cn } from "@/lib/utils";
 import SideNav from "@/components/SideNav";
+import { Moon } from "lucide-react";
+import { Bell } from "lucide-react";
+import { AvatarDemo } from "@/components/AvatarDemo";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,10 +36,12 @@ export default function RootLayout({
             <SideNav />
           </div>
           <MaxWidthWrapper className="flex-grow p-1 md:overflow-y-auto md:p-2">
-            <div className="flex justify-end mr-2 gap-x-6 mt-2">
-              <div>moon</div>
-              <div>camp</div>
-              <div className="bg-zinc-700 rounded-full h-8 w-8"></div>
+            <div className="flex justify-end items-center mr-2 gap-x-6 mt-2">
+              <Moon className="text-zinc-600" />
+              <Bell className="text-zinc-600" />
+              <div className="bg-zinc-700 rounded-full h-8 w-8">
+                <AvatarDemo />
+              </div>
             </div>
             {children}
           </MaxWidthWrapper>
