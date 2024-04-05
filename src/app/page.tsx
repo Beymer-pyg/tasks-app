@@ -1,12 +1,23 @@
 "use client";
 import Column from "@/components/Column";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { todoData } from "@/lib/data";
-import React from "react";
+import { exampleData, todoData } from "@/lib/data";
+import React, { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
+import { useBoardStore } from "@/store/BoardStore";
 
 export default function Home() {
+  const [board, getBoard] = useBoardStore((state) => [
+    state.board,
+    state.getBoard,
+  ]);
+  console.log(getBoard);
+
+  useEffect(() => {
+    getBoard();
+  }, [getBoard]);
+
   const handleOnDragEnd = () => {
     console.log("drag end");
   };
@@ -22,9 +33,16 @@ export default function Home() {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {todoData.map(({ id, todos }, index) => (
-                  <Column key={id} id={id} todos={todos} index={index} />
-                ))}
+                {Array.from(board.columns.entries()).map(
+                  ([id, column], index) => (
+                    <Column
+                      key={id}
+                      id={id}
+                      todos={column.todos}
+                      index={index}
+                    />
+                  )
+                )}
               </div>
             )}
           </Droppable>
