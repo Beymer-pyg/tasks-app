@@ -17,17 +17,17 @@ export default function SideNav() {
           <HabitHUBLogo />
         </div>
       </Link>
-      <div className="mb-2 px-1">
+      <div className="mb-2 px-1 mx-auto">
         <CalendarComp />
       </div>
-      <div>
+      <div className="md:mt-6">
         <div className="font-semibold px-2">Tasks</div>
         <div className="flex w-full items-center justify-between bg-gray-200 h-9">
           <div className="ml-3.5">Today</div>
           <div className="mr-2">2</div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-4 mt-12">
+      <div className="flex flex-col gap-y-4 mt-2 md:mt-12">
         <div className="font-semibold px-2">Lists</div>
         <div className="flex w-full items-center justify-between">
           <div className="ml-3.5">Daily Routine</div>

@@ -32,7 +32,7 @@ export function DialogDemo() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="text-lg leading-6 pb-2">
-            Add a Task
+            Agregar tarea
           </DialogTitle>
           <DialogDescription>
             Apunta y organiza tus tareas de forma sencilla y rápida.
@@ -41,7 +41,7 @@ export function DialogDemo() {
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Name
+              Nombre
             </Label>
             <input
               id="name"
@@ -57,7 +57,7 @@ export function DialogDemo() {
             type="submit"
             className="px-5 py-2 disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
           >
-            Save changes
+            Agregar tarea
           </Button>
         </DialogFooter>
       </DialogContent>
