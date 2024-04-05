@@ -5,6 +5,10 @@ type SEO = {
   noIndex: boolean;
 };
 
+interface Board {
+  columns: Map<TypedColumn, Column>;
+}
+
 // propiedades Column
 
 // tipando el todo
@@ -20,5 +24,4 @@ interface Todo {
   $createdAt: string;
   title: string;
   status: TypedColumn;
-  image?: Image;
 }
