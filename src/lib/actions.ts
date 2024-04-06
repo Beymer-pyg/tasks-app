@@ -63,6 +63,22 @@ export async function getTaskRequest() {}
 
 export const createTaskRequest = async () => {};
 
-export const updateTaskRequest = async () => {};
+export const updateTaskRequest = async (todo: Todo, columnId: TypedColumn) => {
+  try {
+    await db.todos.update({
+      where: {
+        id: todo.$id,
+      },
+      data: {
+        title: todo.title,
+        status: columnId,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Database error: Failed to update data",
+    };
+  }
+};
 
 export const deleteTaskRequest = async (id: string) => {};

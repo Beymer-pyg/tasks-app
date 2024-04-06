@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -53,12 +54,14 @@ export function DialogDemo() {
           <TaskTypeRadioGroup />
         </div>
         <DialogFooter>
-          <Button
-            type="submit"
-            className="px-5 py-2 disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
-          >
-            Agregar tarea
-          </Button>
+          <DialogClose asChild>
+            <Button
+              type="submit"
+              className="px-5 py-2 disabled:bg-gray-300 disabled:text-gray-900 disabled:cursor-not-allowed"
+            >
+              Agregar tarea
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
