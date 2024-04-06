@@ -1,10 +1,3 @@
-type SEO = {
-  title: string;
-  description: string;
-  image: Image;
-  noIndex: boolean;
-};
-
 interface Board {
   columns: Map<TypedColumn, Column>;
 }

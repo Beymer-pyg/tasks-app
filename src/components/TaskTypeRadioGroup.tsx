@@ -1,5 +1,6 @@
 "use client";
 
+import { useBoardStore } from "@/store/BoardStore";
 import { RadioGroup } from "@headlessui/react";
 import { CircleCheck } from "lucide-react";
 
@@ -25,19 +26,19 @@ const types = [
 ];
 
 function TaskTypeRadioGroup() {
-  /*   const [setNewTaskType, newTaskType] = useBoardStore((state) => [
+  const [setNewTaskType, newTaskType] = useBoardStore((state) => [
     state.setNewTaskType,
     state.newTaskType,
-  ]); */
+  ]);
 
   return (
     <div className="w-full py-5">
       <div className="mx-auto w-full max-w-md">
         <RadioGroup
-        // value={newTaskType}
-        // onChange={(e) => {
-        //   setNewTaskType(e);
-        // }}
+          value={newTaskType}
+          onChange={(e) => {
+            setNewTaskType(e);
+          }}
         >
           <div className="space-y-2">
             {types.map((type) => (

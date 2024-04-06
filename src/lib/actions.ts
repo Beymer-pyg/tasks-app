@@ -13,7 +13,7 @@ export async function getTasksRequest() {
           todos: [],
         });
       }
-      console.log(acc);
+      // console.log(acc);
       acc.get(todo.status)!.todos.push({
         $id: todo.id,
         $createdAt: todo.createdAt.toISOString(),
@@ -23,7 +23,7 @@ export async function getTasksRequest() {
       });
       return acc;
     }, new Map<TypedColumn, Column>());
-    console.log(columns);
+    // console.log(columns);
 
     // if columns doesnt have inprogress, todo and done, add them with empty todos
     const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
@@ -36,8 +36,8 @@ export async function getTasksRequest() {
         });
       }
     }
-    console.log(columns);
-    console.log("the colums entries is: ", columns.entries());
+    // console.log(columns);
+    // console.log("the colums entries is: ", columns.entries());
     const sortedColumns = new Map(
       // [...columns.entries()]
       Array.from(columns.entries()).sort(
@@ -61,7 +61,24 @@ export async function getTasksRequest() {
 
 export async function getTaskRequest() {}
 
-export const createTaskRequest = async () => {};
+export const createTaskRequest = async (
+  todo: string,
+  columnId: TypedColumn
+) => {
+  try {
+    const { id, createdAt } = await db.todos.create({
+      data: {
+        title: todo,
+        status: columnId,
+      },
+    });
+    // if (id === undefined) throw new Error("Failed to create data");
+
+    return { id, createdAt };
+  } catch (error) {
+    console.log("Database error: Failed to create data");
+  }
+};
 
 export const updateTaskRequest = async (todo: Todo, columnId: TypedColumn) => {
   try {
@@ -75,9 +92,7 @@ export const updateTaskRequest = async (todo: Todo, columnId: TypedColumn) => {
       },
     });
   } catch (error) {
-    return {
-      message: "Database error: Failed to update data",
-    };
+    console.log("Database error: Failed to update data");
   }
 };
 

@@ -1,12 +1,13 @@
 // "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 import TodoCard from "./TodoCard";
 import { CirclePlus } from "lucide-react";
 import { useModalStore } from "@/store/ModalStore";
 import { DialogDemo } from "./DialogDemo";
 import { Draggable } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
+import { useBoardStore } from "@/store/BoardStore";
 
 type Props = {
   id: TypedColumn;
@@ -24,10 +25,6 @@ const idToColumnText: {
 
 const Column = ({ id, todos, index }: Props) => {
   // const openModal = useModalStore((state) => state.openModal);
-
-  // const handleAddTodo = () => {
-  //   openModal();
-  // };
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -84,7 +81,8 @@ const Column = ({ id, todos, index }: Props) => {
           >
             <CirclePlus className="h-7 w-7" />
           </button> */}
-                    <DialogDemo />
+
+                    {/* <DialogDemo /> */}
                   </div>
                 </div>
               </div>
