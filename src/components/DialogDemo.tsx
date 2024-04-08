@@ -18,6 +18,9 @@ import { CirclePlus } from "lucide-react";
 import TaskTypeRadioGroup from "./TaskTypeRadioGroup";
 import { useBoardStore } from "@/store/BoardStore";
 import { FormEvent, useState } from "react";
+import { useModalStore } from "@/store/ModalStore";
+
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 export function DialogDemo() {
   const [addTask, newTaskInput, setNewTaskInput, newTaskType, setNewTaskType] =
@@ -29,11 +32,14 @@ export function DialogDemo() {
       state.setNewTaskType,
     ]);
 
-  const [formState, setFormState] = useState({});
+  const [open, setOpen] = useState(false);
+
   // const [isOpen, closeModal] = useModalStore((state) => [
   //   state.isOpen,
   //   state.closeModal,
   // ]);
+
+  const [formState, setFormState] = useState({});
 
   // const { register, handleSubmit } = useForm({
   //   resolver: zodResolver(),
@@ -45,6 +51,8 @@ export function DialogDemo() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    wait().then(() => setOpen(false));
+
     console.log(formState);
     console.log("Task added", newTaskInput, newTaskType);
     if (!newTaskInput) return;
@@ -53,7 +61,7 @@ export function DialogDemo() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {/* <Button variant="outline">Edit Profile</Button> */}
         <Button
@@ -63,8 +71,9 @@ export function DialogDemo() {
           <CirclePlus className="h-7 w-7" />
         </Button>
       </DialogTrigger>
-      <form onSubmit={handleSubmit}>
-        <DialogContent className="sm:max-w-[425px]">
+
+      <DialogContent className="sm:max-w-[425px]">
+        <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle className="text-lg leading-6 pb-2">
               Agregar tarea
@@ -97,12 +106,12 @@ export function DialogDemo() {
             >
               Agregar tarea
             </Button>
-            <DialogClose asChild>
-              <Button>Cerrar</Button>
-            </DialogClose>
+            {/* <DialogClose asChild>
+            <Button>Cerrar</Button>
+          </DialogClose> */}
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }
