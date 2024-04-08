@@ -28,11 +28,6 @@ const Column = ({ id, todos, index }: Props) => {
 
   const [setNewTaskType] = useBoardStore((state) => [state.setNewTaskType]);
 
-  // const handleAddTodo = () => {
-  //   setNewTaskType(id);
-  //   openModal();
-  // };
-
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (

@@ -1,6 +1,3 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -18,7 +15,7 @@ import { CirclePlus } from "lucide-react";
 import TaskTypeRadioGroup from "./TaskTypeRadioGroup";
 import { useBoardStore } from "@/store/BoardStore";
 import { FormEvent, useState } from "react";
-import { useModalStore } from "@/store/ModalStore";
+import { z } from "zod";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -34,26 +31,10 @@ export function DialogDemo() {
 
   const [open, setOpen] = useState(false);
 
-  // const [isOpen, closeModal] = useModalStore((state) => [
-  //   state.isOpen,
-  //   state.closeModal,
-  // ]);
-
-  const [formState, setFormState] = useState({});
-
-  // const { register, handleSubmit } = useForm({
-  //   resolver: zodResolver(),
-  // });
-
-  // const handleAddTodo = () => {
-  //   setNewTaskType(id);
-  // };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     wait().then(() => setOpen(false));
 
-    console.log(formState);
     console.log("Task added", newTaskInput, newTaskType);
     if (!newTaskInput) return;
 
@@ -64,24 +45,21 @@ export function DialogDemo() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {/* <Button variant="outline">Edit Profile</Button> */}
-        <Button
-          // onClick={handleAddTodo}
-          className="text-green-500 hover:text-green-600 bg-transparent hover:bg-transparent"
-        >
+        <Button className="text-green-500 hover:text-green-600 bg-transparent hover:bg-transparent">
           <CirclePlus className="h-7 w-7" />
         </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle className="text-lg leading-6 pb-2">
+            Agregar tarea
+          </DialogTitle>
+          <DialogDescription>
+            Apunta y organiza tus tareas de forma sencilla y rápida.
+          </DialogDescription>
+        </DialogHeader>
         <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle className="text-lg leading-6 pb-2">
-              Agregar tarea
-            </DialogTitle>
-            <DialogDescription>
-              Apunta y organiza tus tareas de forma sencilla y rápida.
-            </DialogDescription>
-          </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -103,6 +81,7 @@ export function DialogDemo() {
             <Button
               type="submit"
               className="px-5 py-2 disabled:bg-gray-300 disabled:text-gray-900 disabled:cursor-not-allowed"
+              disabled={!newTaskInput}
             >
               Agregar tarea
             </Button>

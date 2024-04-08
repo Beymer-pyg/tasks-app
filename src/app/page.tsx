@@ -6,6 +6,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
 import { useBoardStore } from "@/store/BoardStore";
 import { DialogDemo } from "@/components/DialogDemo";
+import { DialogHookForm } from "@/components/DialogHookForm";
 
 export default function Home() {
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore(
@@ -111,7 +112,8 @@ export default function Home() {
     <>
       <MaxWidthWrapper>
         <div className="font-bold text-3xl mb-4">
-          New Task <DialogDemo />
+          {/* New Task <DialogDemo /> */}
+          New Task <DialogHookForm />
         </div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="board" direction="horizontal" type="column">
