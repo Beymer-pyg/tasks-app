@@ -96,4 +96,14 @@ export const updateTaskRequest = async (todo: Todo, columnId: TypedColumn) => {
   }
 };
 
-export const deleteTaskRequest = async (id: string) => {};
+export const deleteTaskRequest = async (id: string) => {
+  try {
+    await db.todos.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    console.log("Database error: Failed to delete data");
+  }
+};

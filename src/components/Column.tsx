@@ -3,7 +3,6 @@
 import React, { use, useEffect } from "react";
 import TodoCard from "./TodoCard";
 import { CirclePlus } from "lucide-react";
-import { useModalStore } from "@/store/ModalStore";
 import { DialogDemo } from "./DialogDemo";
 import { Draggable } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
@@ -24,8 +23,6 @@ const idToColumnText: {
 };
 
 const Column = ({ id, todos, index }: Props) => {
-  const openModal = useModalStore((state) => state.openModal);
-
   const [setNewTaskType] = useBoardStore((state) => [state.setNewTaskType]);
 
   return (

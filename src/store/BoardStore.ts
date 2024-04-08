@@ -1,5 +1,6 @@
 import {
   createTaskRequest,
+  deleteTaskRequest,
   getTasksRequest,
   updateTaskRequest,
 } from "@/lib/actions";
@@ -18,6 +19,7 @@ interface BoardState {
   setNewTaskType: (columnId: TypedColumn) => void;
 
   addTask: (todo: string, columnId: TypedColumn) => void;
+  deleteTask: (taskIndex: number, todo: Todo, id: TypedColumn) => void;
 }
 
 export const useBoardStore = create<BoardState>((set, get) => ({
@@ -31,6 +33,17 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     set({ board });
   },
   setBoardState: (board) => set({ board }),
+
+  deleteTask: async (taskIndex: number, todo: Todo, id: TypedColumn) => {
+    const newColumns = new Map(get().board.columns);
+
+    // delete todoId from newColumns
+    newColumns.get(id)?.todos.splice(taskIndex, 1);
+
+    set({ board: { columns: newColumns } });
+
+    await deleteTaskRequest(todo.$id);
+  },
 
   updateTodoInDB: async (todo, columnId) => {
     await updateTaskRequest(todo, columnId);
