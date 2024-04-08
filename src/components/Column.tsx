@@ -47,7 +47,7 @@ const Column = ({ id, todos, index }: Props) => {
                 <h2 className="flex justify-between font-semibold text-xl">
                   {idToColumnText[id]}
                   <span className="text-gray-500 bg-gray-200 rounded-full px-2 py-1 text-sm font-normal">
-                    5
+                    {todos.length}
                   </span>
                 </h2>
                 <div className="space-y-2 mt-2">

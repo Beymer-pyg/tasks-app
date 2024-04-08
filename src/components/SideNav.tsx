@@ -1,9 +1,17 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import HabitHUBLogo from "./HabitHUBLogo";
 import CalendarComp from "./CalendarComp";
+import { useBoardStore } from "@/store/BoardStore";
 
 export default function SideNav() {
+  const board = useBoardStore((state) => state.board);
+
+  let totalTodos = 0;
+  for (let column of Array.from(board.columns.values())) {
+    totalTodos += column.todos.length;
+  }
   return (
     <div
       className="flex h-full flex-col pxxx-2 py-4  border-r-2 border-gray-300
@@ -24,7 +32,7 @@ export default function SideNav() {
         <div className="font-semibold px-2">Tasks</div>
         <div className="flex w-full items-center justify-between bg-gray-200 h-9">
           <div className="ml-3.5">Today</div>
-          <div className="mr-2">2</div>
+          <div className="mr-2">{totalTodos}</div>
         </div>
       </div>
       <div className="flex flex-col gap-y-4 mt-2 md:mt-12">
