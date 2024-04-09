@@ -113,7 +113,7 @@ export default function Home() {
       <MaxWidthWrapper>
         <div className="font-bold text-3xl mb-4 dark:text-white">
           {/* New Task <DialogDemo /> */}
-          New Task <DialogHookForm />
+          Nueva tarea <DialogHookForm />
         </div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="board" direction="horizontal" type="column">
