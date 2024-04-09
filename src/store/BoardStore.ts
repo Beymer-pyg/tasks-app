@@ -34,6 +34,9 @@ export const useBoardStore = create<BoardState>((set, get) => ({
       set({ board });
     } catch (error) {
       console.error("Error getting board:", error);
+      console.error("Stack trace:", error.stack);
+      console.log("Database error - Failed to fetch data: ", error);
+      console.log("Database error - Failed to fetch data: ", error.stack);
       // Handle the error appropriately
     }
   },
