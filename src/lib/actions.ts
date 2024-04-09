@@ -5,6 +5,7 @@ export async function getTasksRequest() {
   try {
     const todos = await db.todos.findMany();
     // if (!todos) throw new Error("No data found");
+    console.log("Buscando todos");
 
     const columns = todos.reduce((acc, todo) => {
       if (!acc.get(todo.status)) {
