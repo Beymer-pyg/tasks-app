@@ -9,14 +9,14 @@ export default function SideNav() {
   const board = useBoardStore((state) => state.board);
   const [totalTodos, setTotalTodos] = useState(0);
 
-  useEffect(() => {
-    setTotalTodos(
-      Array.from(board.columns.values()).reduce(
-        (count, column) => count + column.todos.length,
-        0
-      )
-    );
-  }, [board]);
+  // useEffect(() => {
+  //   setTotalTodos(
+  //     Array.from(board.columns.values()).reduce(
+  //       (count, column) => count + column.todos.length,
+  //       0
+  //     )
+  //   );
+  // }, [board]);
   // useEffect(() => {
   //   let count = 0;
   //   for (let column of Array.from(board.columns.values())) {
