@@ -55,6 +55,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     const result = await createTaskRequest(todo, columnId);
 
     if (!result) {
+      console.log("Failed to create task");
       throw new Error("Failed to create task");
     }
     const { id, createdAt } = result;

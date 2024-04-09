@@ -4,7 +4,7 @@ import { db } from "@/db";
 export async function getTasksRequest() {
   try {
     const todos = await db.todos.findMany();
-    if (!todos) throw new Error("No data found");
+    // if (!todos) throw new Error("No data found");
 
     const columns = todos.reduce((acc, todo) => {
       if (!acc.get(todo.status)) {
