@@ -29,8 +29,13 @@ export const useBoardStore = create<BoardState>((set, get) => ({
   newTaskInput: "",
   newTaskType: "todo",
   getBoard: async () => {
-    const board = await getTasksRequest();
-    set({ board });
+    try {
+      const board = await getTasksRequest();
+      set({ board });
+    } catch (error) {
+      console.error("Error getting board:", error);
+      // Handle the error appropriately
+    }
   },
   setBoardState: (board) => set({ board }),
 
