@@ -77,7 +77,7 @@ export function DialogHookForm() {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] dark:bg-slate-900/70">
         <DialogHeader>
           <DialogTitle className="text-lg leading-6 pb-2">
             Agregar tarea
@@ -99,7 +99,8 @@ export function DialogHookForm() {
                     <input
                       type="text"
                       id="name"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      placeholder="Pasear al perro"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 transition-all dark:outline-none dark:text-gray-900"
                       {...field}
                       value={newTaskInput}
                       onChange={(e) => {
@@ -119,13 +120,13 @@ export function DialogHookForm() {
               <TaskTypeRadioGroup />
             </div>
             <DialogFooter>
-              <Button
+              <button
                 type="submit"
-                className="px-5 py-2 disabled:bg-gray-300 disabled:text-gray-900 disabled:cursor-not-allowed"
+                className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-md outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 dark:bg-gray-800 disabled:scale-100 disabled:bg-opacity-60 dark:disabled:bg-gray-800 dark:disabled:text-gray-700"
                 disabled={!newTaskInput}
               >
                 Agregar tarea
-              </Button>
+              </button>
             </DialogFooter>
           </form>
         </Form>

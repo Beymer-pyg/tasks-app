@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" data-mode="light">
       <body
         className={cn(
-          "min-h-screen font-sans antialiased grainy",
+          "min-h-screen font-sans antialiased grainy text-gray-950 dark:bg-gray-900/95 dark:text-gray-50 dark:text-opacity-90",
           fontSans.variable
         )}
       >
@@ -41,7 +41,7 @@ export default function RootLayout({
           <MaxWidthWrapper className="flex-grow p-1 md:overflow-y-auto md:p-2">
             <div className="flex justify-end items-center mr-2 gap-x-6 mt-2">
               <ThemeSwitch />
-              <Bell className="text-zinc-600" />
+              <Bell className="text-zinc-600 dark:text-white/50" />
               <div className="bg-zinc-700 rounded-full h-8 w-8">
                 <AvatarDemo />
               </div>

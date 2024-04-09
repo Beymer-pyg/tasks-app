@@ -42,18 +42,18 @@ export default function SideNav() {
       </div>
       <div className="md:mt-6">
         <div className="font-semibold px-2">Tasks</div>
-        <div className="flex w-full items-center justify-between bg-gray-200 h-9">
+        <div className="flex w-full items-center justify-between bg-gray-200 h-9 dark:text-black dark:bg-white/60">
           <div className="ml-3.5">Today</div>
           <div className="mr-2">{totalTodos}</div>
         </div>
       </div>
       <div className="flex flex-col gap-y-4 mt-2 md:mt-12">
         <div className="font-semibold px-2">Lists</div>
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between py-1.5 dark:bg-white/10">
           <div className="ml-3.5">Daily Routine</div>
           <div className="mr-2">1</div>
         </div>
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between py-1.5 dark:bg-white/10">
           <div className="ml-3.5">Study</div>
           <div className="mr-2">0</div>
         </div>

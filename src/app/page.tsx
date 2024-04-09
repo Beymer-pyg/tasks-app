@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <>
       <MaxWidthWrapper>
-        <div className="font-bold text-3xl mb-4">
+        <div className="font-bold text-3xl mb-4 dark:text-white">
           {/* New Task <DialogDemo /> */}
           New Task <DialogHookForm />
         </div>
@@ -119,7 +119,7 @@ export default function Home() {
           <Droppable droppableId="board" direction="horizontal" type="column">
             {(provided) => (
               <div
-                className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mx-auto"
+                className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mx-auto rounded-xl"
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >

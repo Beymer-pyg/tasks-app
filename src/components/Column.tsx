@@ -32,7 +32,7 @@ const Column = ({ id, todos, index }: Props) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          className="bg-violet-100/50"
+          className="bg-violet-100/50 rounded-xl dark:bg-violet-300"
         >
           {/* render droppable todos in the column */}
           <Droppable droppableId={index.toString()} type="card">
@@ -40,17 +40,17 @@ const Column = ({ id, todos, index }: Props) => {
               <div
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                className={`p-2 rounded-2xl shadow-sm  ${
+                className={`p-2 rounded-2xl shadow-sm dark:bg-gray-900/70 ${
                   snapshot.isDraggingOver ? "bg-green-200" : "bg-white/50"
                 }`}
               >
-                <h2 className="flex justify-between font-semibold text-xl">
+                <h2 className="flex justify-between font-semibold text-xl dark:text-white/90">
                   {idToColumnText[id]}
                   <span className="text-gray-500 bg-gray-200 rounded-full px-2 py-1 text-sm font-normal">
                     {todos.length}
                   </span>
                 </h2>
-                <div className="space-y-2 mt-2">
+                <div className="space-y-2 mt-2 dark:bg-gray-400">
                   {todos.map((todo, index) => {
                     return (
                       <Draggable

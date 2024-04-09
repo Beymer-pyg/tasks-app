@@ -25,7 +25,7 @@ function TodoCard({
   const deleteTask = useBoardStore((state) => state.deleteTask);
   return (
     <div
-      className="bg-white rounded-md space-y-2 drop-shadow-md"
+      className="bg-white rounded-md space-y-2 drop-shadow-md dark:text-white dark:bg-gray-900/30"
       {...draggableProps}
       {...dragHandleProps}
       ref={innerRef}
