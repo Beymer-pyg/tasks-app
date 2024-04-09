@@ -1,17 +1,29 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HabitHUBLogo from "./HabitHUBLogo";
 import CalendarComp from "./CalendarComp";
 import { useBoardStore } from "@/store/BoardStore";
 
 export default function SideNav() {
   const board = useBoardStore((state) => state.board);
+  const [totalTodos, setTotalTodos] = useState(0);
 
-  let totalTodos = 0;
-  for (let column of Array.from(board.columns.values())) {
-    totalTodos += column.todos.length;
-  }
+  useEffect(() => {
+    setTotalTodos(
+      Array.from(board.columns.values()).reduce(
+        (count, column) => count + column.todos.length,
+        0
+      )
+    );
+  }, [board]);
+  // useEffect(() => {
+  //   let count = 0;
+  //   for (let column of Array.from(board.columns.values())) {
+  //     count += column.todos.length;
+  //   }
+  //   setTotalTodos(count);
+  // }, [board]);
   return (
     <div
       className="flex h-full flex-col pxxx-2 py-4  border-r-2 border-gray-300

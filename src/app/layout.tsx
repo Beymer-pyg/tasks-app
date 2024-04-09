@@ -4,9 +4,11 @@ import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { cn } from "@/lib/utils";
 import SideNav from "@/components/SideNav";
-import { Moon } from "lucide-react";
+
 import { Bell } from "lucide-react";
 import { AvatarDemo } from "@/components/AvatarDemo";
+import ThemeSwitch from "@/components/ThemeSwitch";
+import ThemeLocalStore from "@/components/ThemeLocalStore";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -24,20 +26,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" data-mode="light">
       <body
         className={cn(
           "min-h-screen font-sans antialiased grainy",
           fontSans.variable
         )}
       >
+        <ThemeLocalStore />
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
           <div className="w-full flex-none md:w-72">
             <SideNav />
           </div>
           <MaxWidthWrapper className="flex-grow p-1 md:overflow-y-auto md:p-2">
             <div className="flex justify-end items-center mr-2 gap-x-6 mt-2">
-              <Moon className="text-zinc-600" />
+              <ThemeSwitch />
               <Bell className="text-zinc-600" />
               <div className="bg-zinc-700 rounded-full h-8 w-8">
                 <AvatarDemo />
