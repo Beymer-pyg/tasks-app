@@ -13,7 +13,6 @@ export async function getTasksRequest() {
           todos: [],
         });
       }
-      // console.log(acc);
       acc.get(todo.status)!.todos.push({
         $id: todo.id,
         $createdAt: todo.createdAt.toISOString(),
@@ -23,7 +22,6 @@ export async function getTasksRequest() {
       });
       return acc;
     }, new Map<TypedColumn, Column>());
-    // console.log(columns);
 
     // if columns doesnt have inprogress, todo and done, add them with empty todos
     const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
@@ -36,8 +34,6 @@ export async function getTasksRequest() {
         });
       }
     }
-    // console.log(columns);
-    // console.log("the colums entries is: ", columns.entries());
     const sortedColumns = new Map(
       // [...columns.entries()]
       Array.from(columns.entries()).sort(

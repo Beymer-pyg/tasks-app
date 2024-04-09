@@ -62,7 +62,6 @@ export function DialogHookForm() {
   const myHandleSubmit = () => {
     wait().then(() => setOpen(false));
 
-    console.log("Task added", newTaskInput, newTaskType);
     if (!newTaskInput) return;
 
     addTask(newTaskInput, newTaskType);

@@ -17,7 +17,6 @@ export default function Home() {
       state.updateTodoInDB,
     ]
   );
-  // console.log(getBoard);
 
   useEffect(() => {
     getBoard();
@@ -25,7 +24,6 @@ export default function Home() {
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
-    // console.log(result);
 
     //check if user dragged card outside of the board
     if (!destination) return;
@@ -33,7 +31,6 @@ export default function Home() {
     //Handle column drag
     if (type === "column") {
       const entries = Array.from(board.columns.entries());
-      // console.log(entries);
       const [removed] = entries.splice(source.index, 1);
       entries.splice(destination.index, 0, removed);
       const rearrangedColumns = new Map(entries);
@@ -45,11 +42,8 @@ export default function Home() {
 
     //needed as the indexes are store as number 0,1,2,etc. Instead of id's with dnd library
     const columns = Array.from(board.columns);
-    // console.log(columns);
     const startColIndex = columns[Number(source.droppableId)];
-    // console.log(startColIndex);
     const finishColIndex = columns[Number(destination.droppableId)];
-    // console.log(finishColIndex);
     if (startColIndex === undefined && finishColIndex === undefined) {
       return;
     }
@@ -58,12 +52,10 @@ export default function Home() {
       id: startColIndex[0],
       todos: startColIndex[1].todos,
     };
-    // console.log(startCol);
     const finishCol: Column = {
       id: finishColIndex[0],
       todos: finishColIndex[1].todos,
     };
-    // console.log(finishCol);
 
     if (!startCol || !finishCol) return;
     if (source.index === destination.index && startCol === finishCol) return;

@@ -52,10 +52,8 @@ export const useBoardStore = create<BoardState>((set, get) => ({
   setNewTaskInput: (input: string) => set({ newTaskInput: input }),
   setNewTaskType: (columnId: TypedColumn) => set({ newTaskType: columnId }),
   addTask: async (todo: string, columnId: TypedColumn) => {
-    console.log("creando documento");
     const result = await createTaskRequest(todo, columnId);
 
-    console.log("la base de datos responde", result);
     if (!result) {
       throw new Error("Failed to create task");
     }
