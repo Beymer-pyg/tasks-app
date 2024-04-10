@@ -2,8 +2,6 @@ interface Board {
   columns: Map<TypedColumn, Column>;
 }
 
-// propiedades Column
-
 // tipando el todo
 type TypedColumn = "todo" | "inprogress" | "done";
 

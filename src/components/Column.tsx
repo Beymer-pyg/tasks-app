@@ -2,8 +2,6 @@
 
 import React, { use, useEffect } from "react";
 import TodoCard from "./TodoCard";
-import { CirclePlus } from "lucide-react";
-import { DialogDemo } from "./DialogDemo";
 import { Draggable } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
 import { useBoardStore } from "@/store/BoardStore";
@@ -52,7 +50,7 @@ const Column = ({ id, todos, index }: Props) => {
                     {todos.length}
                   </span>
                 </h2>
-                <div className="space-y-2 mt-2 dark:bg-gray-400">
+                <div className="space-y-2 mt-2 dark:bg-gray-400 pt-[8px]">
                   {todos.map((todo, index) => {
                     return (
                       <Draggable
@@ -75,16 +73,7 @@ const Column = ({ id, todos, index }: Props) => {
                   })}
                   {provided.placeholder}
 
-                  <div className="flex items-end justify-end p-3">
-                    {/* <button
-                      onClick={handleAddTodo}
-                      className="text-green-500 hover:text-green-600"
-                    >
-                      <CirclePlus className="h-7 w-7" />
-                    </button> */}
-
-                    {/* <DialogDemo /> */}
-                  </div>
+                  <div className="flex items-end justify-end"></div>
                 </div>
               </div>
             )}

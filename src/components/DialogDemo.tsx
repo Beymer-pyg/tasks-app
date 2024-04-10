@@ -7,15 +7,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CirclePlus } from "lucide-react";
 import TaskTypeRadioGroup from "./TaskTypeRadioGroup";
 import { useBoardStore } from "@/store/BoardStore";
 import { FormEvent, useState } from "react";
-import { z } from "zod";
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -43,7 +40,6 @@ export function DialogDemo() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {/* <Button variant="outline">Edit Profile</Button> */}
         <Button className="text-green-500 hover:text-green-600 bg-transparent hover:bg-transparent">
           <CirclePlus className="h-7 w-7" />
         </Button>

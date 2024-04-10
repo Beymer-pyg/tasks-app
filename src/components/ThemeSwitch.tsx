@@ -1,18 +1,13 @@
 "use client";
 
 import { useSetTheme, useTheme } from "@/store/ThemeStore";
-// import useThemeStore from "@/store/ThemeStore";
 import { Moon } from "lucide-react";
 import { Sun } from "lucide-react";
-// import { useThemeStore } from "@/store/ThemeStore";
 
 const ThemeSwitch = () => {
   const theme = useTheme();
   const setTheme = useSetTheme();
-  // const [theme, toggleTheme] = useThemeStore((state) => [
-  //   state.theme,
-  //   state.toggleTheme,
-  // ]);
+
   return (
     <div>
       <button

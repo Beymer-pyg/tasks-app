@@ -94,7 +94,6 @@ export function DialogHookForm() {
                 <FormItem>
                   <FormLabel>Nombre</FormLabel>
                   <FormControl>
-                    {/* <Input placeholder="shadcn" {...field} /> */}
                     <input
                       type="text"
                       id="name"
