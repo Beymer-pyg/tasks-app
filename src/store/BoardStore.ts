@@ -17,6 +17,9 @@ interface BoardState {
   newTaskInput: string;
   newTaskType: TypedColumn;
 
+  searchString: string;
+  setSearchString: (searchString: string) => void;
+
   setNewTaskInput: (input: string) => void;
   setNewTaskType: (columnId: TypedColumn) => void;
 
@@ -29,6 +32,8 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     columns: new Map<TypedColumn, Column>(),
   },
   newTaskInput: "",
+  searchString: "",
+  setSearchString: (searchString) => set({ searchString }),
   newTaskType: "todo",
   getBoard: async () => {
     try {

@@ -5,18 +5,25 @@ import React, { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/StrictModeDroppable";
 import { useBoardStore } from "@/store/BoardStore";
-import { DialogDemo } from "@/components/DialogDemo";
 import { DialogHookForm } from "@/components/DialogHookForm";
+import { SearchCheck } from "lucide-react";
 
 export default function Home() {
-  const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore(
-    (state) => [
-      state.board,
-      state.getBoard,
-      state.setBoardState,
-      state.updateTodoInDB,
-    ]
-  );
+  const [
+    board,
+    searchString,
+    setSearchString,
+    getBoard,
+    setBoardState,
+    updateTodoInDB,
+  ] = useBoardStore((state) => [
+    state.board,
+    state.searchString,
+    state.setSearchString,
+    state.getBoard,
+    state.setBoardState,
+    state.updateTodoInDB,
+  ]);
 
   useEffect(() => {
     getBoard();
@@ -103,9 +110,27 @@ export default function Home() {
   return (
     <>
       <MaxWidthWrapper>
-        <div className="font-bold text-3xl mb-4 dark:text-white">
-          {/* New Task <DialogDemo /> */}
-          Nueva tarea <DialogHookForm />
+        <div className="flex flex-col md:flex-row items-center mb-4 p-4 bbg-gray-300/10 rounded-2xl">
+          <div className="font-bold text-3xl  dark:text-white flex items-center">
+            {/* New Task <DialogDemo /> */}
+            Nueva tarea <DialogHookForm />
+          </div>
+
+          <div className="flex items-center flex-1 justify-end w-full">
+            <form className="flex items-center space-x-4 bg-slate-100 rounded-md shadow-md flex-1 md:flex-initial dark:bg-slate-700">
+              <SearchCheck className="h-6 w-6 text-gray-500 ml-2 dark:text-white/90" />
+              <input
+                type="text"
+                placeholder="Buscar..."
+                value={searchString}
+                onChange={(e) => setSearchString(e.target.value)}
+                className="flex-1 outline-none p-1.5 bg-slate-100 rounded-md dark:bg-slate-700"
+              />
+              <button type="submit" hidden>
+                Search
+              </button>
+            </form>
+          </div>
         </div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="board" direction="horizontal" type="column">
